@@ -8,13 +8,22 @@
 
 import UIKit
 
+let appURL = URL(string: "comgooglemaps://");
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        openApplication()
     }
-
+    
+    func openApplication() {
+        if( UIApplication.shared.canOpenURL(appURL!) ) {
+            UIApplication.shared.open(appURL!, options:[:], completionHandler: nil)
+        } else {
+            print("ERROR - Can't open ", appURL!.absoluteString)
+        }
+    }
 
 }
 
