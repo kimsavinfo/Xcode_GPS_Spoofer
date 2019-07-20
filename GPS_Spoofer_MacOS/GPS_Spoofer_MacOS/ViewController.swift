@@ -16,6 +16,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var terminal: NSScrollView!
     @IBOutlet weak var applyButton: NSButton!
     @IBOutlet weak var saveButton: NSButton!
+    @IBOutlet weak var movingSpeed: NSSegmentedControl!
     
     let gpxPathKey = "gpxPath"
     var gpxFile = GPXFile()
@@ -121,19 +122,31 @@ class ViewController: NSViewController {
     
     // MARK: - Keyboard actions
     
+    
     override func keyDown(with event: NSEvent) {
+        //let speed = movingSpeed.selectedSegment
+        let speed = 9 / 3600 // 0.0025 ~= 2,5m/s ~= 9 km/h
+        
+        
         if (event.keyCode == 123){
-            terminal.documentView!.insertText("left\n")
+            terminal.documentView!.insertText("Going west\n")
+            gpsLocation.moveLongitude(left: false);
         }
         if (event.keyCode == 124){
-            terminal.documentView!.insertText("right\n")
+            terminal.documentView!.insertText("Going east\n")
+            gpsLocation.moveLongitude(left: true);
         }
         if (event.keyCode == 126){
-            terminal.documentView!.insertText("up\n")
+            terminal.documentView!.insertText("Going north\n")
+            gpsLocation.moveLatitude(up: true)
         }
         if (event.keyCode == 125){
-            terminal.documentView!.insertText("down\n")
+            terminal.documentView!.insertText("Going south\n")
+            gpsLocation.moveLatitude(up: false)
         }
+        
+        saveCoordinates()
+        showCoordinates()
     }
 }
 

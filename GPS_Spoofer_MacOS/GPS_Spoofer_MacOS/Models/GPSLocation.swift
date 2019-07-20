@@ -11,6 +11,7 @@ import Foundation
 class GPSLocation {
     private var latitude: Double
     private var longitude: Double
+    private let distanceFactor = 0.00005
     
     init() {
         latitude = 0
@@ -37,5 +38,21 @@ class GPSLocation {
     
     func getLongitude() -> Double {
         return longitude
+    }
+    
+    func moveLatitude(up: Bool) {
+        if(up) {
+            latitude += distanceFactor
+        } else {
+            latitude -= distanceFactor
+        }
+    }
+    
+    func moveLongitude(left: Bool) {
+        if(left) {
+            longitude += distanceFactor
+        } else {
+            longitude -= distanceFactor
+        }
     }
 }
