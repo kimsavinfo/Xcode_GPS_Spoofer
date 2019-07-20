@@ -11,6 +11,7 @@
 		C0F63C9E22E2DE92008D8D2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F63C9D22E2DE92008D8D2D /* ViewController.swift */; };
 		C0F63CA022E2DE93008D8D2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F63C9F22E2DE93008D8D2D /* Assets.xcassets */; };
 		C0F63CA322E2DE93008D8D2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F63CA122E2DE93008D8D2D /* Main.storyboard */; };
+		C0F63CAC22E2DF3B008D8D2D /* gps_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C0F63CAB22E2DF3B008D8D2D /* gps_location.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		C0F63CA222E2DE93008D8D2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0F63CA422E2DE93008D8D2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0F63CA522E2DE93008D8D2D /* GPS_Spoofer_MacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GPS_Spoofer_MacOS.entitlements; sourceTree = "<group>"; };
+		C0F63CAB22E2DF3B008D8D2D /* gps_location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = gps_location.gpx; path = ../GPS_Spoofer_iOS/GPS_Spoofer_iOS/gps_location.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 		C0F63C8F22E2DE92008D8D2D = {
 			isa = PBXGroup;
 			children = (
+				C0F63CAB22E2DF3B008D8D2D /* gps_location.gpx */,
 				C0F63C9A22E2DE92008D8D2D /* GPS_Spoofer_MacOS */,
 				C0F63C9922E2DE92008D8D2D /* Products */,
 			);
@@ -53,14 +56,30 @@
 		C0F63C9A22E2DE92008D8D2D /* GPS_Spoofer_MacOS */ = {
 			isa = PBXGroup;
 			children = (
-				C0F63C9B22E2DE92008D8D2D /* AppDelegate.swift */,
-				C0F63C9D22E2DE92008D8D2D /* ViewController.swift */,
 				C0F63C9F22E2DE93008D8D2D /* Assets.xcassets */,
+				C0F63CAD22E2E404008D8D2D /* Storyboards */,
+				C0F63CAE22E2E40E008D8D2D /* SupportingFiles   */,
+				C0F63C9D22E2DE92008D8D2D /* ViewController.swift */,
+			);
+			path = GPS_Spoofer_MacOS;
+			sourceTree = "<group>";
+		};
+		C0F63CAD22E2E404008D8D2D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
 				C0F63CA122E2DE93008D8D2D /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		C0F63CAE22E2E40E008D8D2D /* SupportingFiles   */ = {
+			isa = PBXGroup;
+			children = (
+				C0F63C9B22E2DE92008D8D2D /* AppDelegate.swift */,
 				C0F63CA422E2DE93008D8D2D /* Info.plist */,
 				C0F63CA522E2DE93008D8D2D /* GPS_Spoofer_MacOS.entitlements */,
 			);
-			path = GPS_Spoofer_MacOS;
+			name = "SupportingFiles  ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0F63CA022E2DE93008D8D2D /* Assets.xcassets in Resources */,
+				C0F63CAC22E2DF3B008D8D2D /* gps_location.gpx in Resources */,
 				C0F63CA322E2DE93008D8D2D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
