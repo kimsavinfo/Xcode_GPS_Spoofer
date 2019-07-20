@@ -879,7 +879,7 @@
                         <outlet property="longitudeText" destination="wz6-nY-ysD" id="pbr-lA-Axa"/>
                         <outlet property="pathLabel" destination="wAx-6a-B44" id="yAk-MG-wUP"/>
                         <outlet property="saveButton" destination="1KF-XW-CPa" id="u5a-Qe-9Ff"/>
-                        <outlet property="terminal" destination="lWt-Pm-kMP" id="dTG-2z-kIa"/>
+                        <outlet property="terminal" destination="lWt-Pm-kMP" id="BOi-UT-2HR"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

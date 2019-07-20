@@ -24,6 +24,10 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
+            self.keyDown(with: $0)
+            return nil
+        }
         loadCities()
         
         var enable = false
@@ -53,6 +57,7 @@ class ViewController: NSViewController {
         if(isEnabled) {
             gpxFile.load(filePath: pathLabel.stringValue, gpsLocation: &gpsLocation)
             showCoordinates()
+            terminal.documentView!.insertText("Press arrow keys to move :)\n")
         }
         
         citySelector.isEnabled = isEnabled
@@ -111,6 +116,23 @@ class ViewController: NSViewController {
             }
         } else {
             return
+        }
+    }
+    
+    // MARK: - Keyboard actions
+    
+    override func keyDown(with event: NSEvent) {
+        if (event.keyCode == 123){
+            terminal.documentView!.insertText("left\n")
+        }
+        if (event.keyCode == 124){
+            terminal.documentView!.insertText("right\n")
+        }
+        if (event.keyCode == 126){
+            terminal.documentView!.insertText("up\n")
+        }
+        if (event.keyCode == 125){
+            terminal.documentView!.insertText("down\n")
         }
     }
 }
