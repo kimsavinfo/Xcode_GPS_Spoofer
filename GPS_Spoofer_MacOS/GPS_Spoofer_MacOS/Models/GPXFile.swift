@@ -43,4 +43,24 @@ class GPXFile: NSObject, XMLParserDelegate {
             loadedLocation.setCoordinates(lat: lat, lon: lon)
         }
     }
+    
+    func saveCoordinates(coordinates: GPSLocation) {
+        var xmlString = ""
+        xmlString.append(contentsOf: "<?xml version=\"1.0\"?>\n")
+        xmlString.append(contentsOf: "<gpx version=\"1.1\" creator=\"Xcode\">\n" )
+        xmlString.append(contentsOf: "\t<wpt lat=\"\(String(coordinates.getLatitude()))\" lon=\"\(String(coordinates.getLongitude()))\">\n" )
+        xmlString.append(contentsOf: "\t\t<name>Cupertino</name>\n" )
+        xmlString.append(contentsOf: "\t\t<time>2014-09-24T14:55:37Z</time>\n" )
+        xmlString.append(contentsOf: "\t</wpt>\n" )
+        xmlString.append(contentsOf: "</gpx>\n" )
+        
+        let path = "/\(fileName).\(fileExtension)"
+        do {
+            try xmlString.write(to: URL(fileURLWithPath: path) , atomically: false, encoding: .utf8)
+            print("write in  ", path)
+        }
+        catch {
+            print("ERROR - saving coordinates in ", fileName, ".", fileExtension, ": ", error)
+        }
+    }
 }

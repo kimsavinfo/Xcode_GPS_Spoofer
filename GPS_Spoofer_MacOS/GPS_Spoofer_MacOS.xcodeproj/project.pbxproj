@@ -14,6 +14,7 @@
 		C0F63CAC22E2DF3B008D8D2D /* gps_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C0F63CAB22E2DF3B008D8D2D /* gps_location.gpx */; };
 		C0F63CB122E2E4CD008D8D2D /* GPSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F63CB022E2E4CD008D8D2D /* GPSLocation.swift */; };
 		C0F63CB322E2E89D008D8D2D /* GPXFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F63CB222E2E89D008D8D2D /* GPXFile.swift */; };
+		C0F63CB522E34B0C008D8D2D /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F63CB422E34B0C008D8D2D /* Cities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		C0F63CAB22E2DF3B008D8D2D /* gps_location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = gps_location.gpx; path = ../GPS_Spoofer_iOS/GPS_Spoofer_iOS/gps_location.gpx; sourceTree = "<group>"; };
 		C0F63CB022E2E4CD008D8D2D /* GPSLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocation.swift; sourceTree = "<group>"; };
 		C0F63CB222E2E89D008D8D2D /* GPXFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFile.swift; sourceTree = "<group>"; };
+		C0F63CB422E34B0C008D8D2D /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				C0F63CAD22E2E404008D8D2D /* Storyboards */,
 				C0F63CAF22E2E492008D8D2D /* Models */,
 				C0F63C9D22E2DE92008D8D2D /* ViewController.swift */,
+				C0F63CB422E34B0C008D8D2D /* Cities.swift */,
 				C0F63CAE22E2E40E008D8D2D /* SupportingFiles   */,
 			);
 			path = GPS_Spoofer_MacOS;
@@ -128,6 +131,11 @@
 				TargetAttributes = {
 					C0F63C9722E2DE92008D8D2D = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -168,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0F63CB122E2E4CD008D8D2D /* GPSLocation.swift in Sources */,
+				C0F63CB522E34B0C008D8D2D /* Cities.swift in Sources */,
 				C0F63C9E22E2DE92008D8D2D /* ViewController.swift in Sources */,
 				C0F63C9C22E2DE92008D8D2D /* AppDelegate.swift in Sources */,
 				C0F63CB322E2E89D008D8D2D /* GPXFile.swift in Sources */,
@@ -307,7 +316,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GPS_Spoofer_MacOS/GPS_Spoofer_MacOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 73M82626GY;
@@ -326,7 +334,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GPS_Spoofer_MacOS/GPS_Spoofer_MacOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 73M82626GY;
