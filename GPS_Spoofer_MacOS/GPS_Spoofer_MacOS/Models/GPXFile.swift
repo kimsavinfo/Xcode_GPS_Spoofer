@@ -12,18 +12,27 @@ class GPXFile: NSObject, XMLParserDelegate {
     private let coordinatesKey = "wpt"
     private let latitudeKey = "lat"
     private let longitudeKey = "lon"
-    private var fileName = ""
-    private var fileExtension = ""
+    private var gpxfilePath = ""
     private var loadedLocation = GPSLocation()
     
-    init(name: String, ext: String) {
-        fileName = name
-        fileExtension = ext
-    }
     
     // MARK: - Load GPS Location from gpx file
     
-    func load(gpsLocation: inout GPSLocation) {
+    func load(filePath: String, gpsLocation: inout GPSLocation) {
+        gpxfilePath = filePath
+        
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: gpxfilePath) {
+            if let parser = XMLParser(contentsOf: URL(fileURLWithPath: gpxfilePath) ) {
+                parser.delegate = self
+                parser.parse()
+            }
+            gpsLocation.setCoordinates(location: loadedLocation)
+        } else {
+            print("ERROR - could not load ", filePath)
+        }
+        
+        /*
         if let path = Bundle.main.url(forResource: fileName, withExtension: fileExtension) {
             if let parser = XMLParser(contentsOf: path) {
                 parser.delegate = self
@@ -31,8 +40,9 @@ class GPXFile: NSObject, XMLParserDelegate {
             }
             gpsLocation.setCoordinates(location: loadedLocation)
         } else {
-            print("ERROR - ", fileName, ".", fileExtension , " path not found")
+            print("ERROR - could not load ", filePath)
         }
+ */
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
@@ -54,13 +64,12 @@ class GPXFile: NSObject, XMLParserDelegate {
         xmlString.append(contentsOf: "\t</wpt>\n" )
         xmlString.append(contentsOf: "</gpx>\n" )
         
-        let path = "/\(fileName).\(fileExtension)"
         do {
-            try xmlString.write(to: URL(fileURLWithPath: path) , atomically: false, encoding: .utf8)
-            print("write in  ", path)
+            try xmlString.write(to: URL(fileURLWithPath: gpxfilePath) , atomically: false, encoding: .utf8)
+            print("Coordinates saved in ", gpxfilePath)
         }
         catch {
-            print("ERROR - saving coordinates in ", fileName, ".", fileExtension, ": ", error)
+            print("ERROR - could not save coordinates in ", gpxfilePath, ": ", error)
         }
     }
 }

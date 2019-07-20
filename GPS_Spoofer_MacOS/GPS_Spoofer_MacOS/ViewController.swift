@@ -9,12 +9,16 @@
 import Cocoa
 
 class ViewController: NSViewController {
+    @IBOutlet weak var pathLabel: NSTextField!
     @IBOutlet weak var citySelector: NSPopUpButton!
     @IBOutlet weak var latitudeText: NSTextField!
     @IBOutlet weak var longitudeText: NSTextField!
     @IBOutlet weak var terminal: NSScrollView!
+    @IBOutlet weak var applyButton: NSButton!
+    @IBOutlet weak var saveButton: NSButton!
     
-    var gpxFile = GPXFile(name: "gps_location", ext: "gpx")
+    let gpxPathKey = "gpxPath"
+    var gpxFile = GPXFile()
     var gpsLocation = GPSLocation()
     
     override func viewDidLoad() {
@@ -22,16 +26,40 @@ class ViewController: NSViewController {
         
         loadCities()
         
-        gpxFile.load(gpsLocation: &gpsLocation)
-        showCoordinates()
+        var enable = false
+        loadUserSettings(enableElements: &enable)
+        setElements(isEnabled: enable)
     }
-    
+
     func loadCities() {
         citySelector.removeAllItems()
         
         for name in citiesKeys {
             citySelector.addItem(withTitle: name)
         }
+    }
+    
+    func loadUserSettings(enableElements: inout Bool) {
+        if let gpxPath = UserDefaults.standard.object(forKey: "gpxPathKey") {
+            let url = URL(fileURLWithPath: gpxPath as! String)
+            if( url.pathExtension == "gpx" ) {
+                enableElements = true
+                pathLabel.stringValue = gpxPath as! String
+            }
+        }
+    }
+    
+    func setElements(isEnabled : Bool) {
+        if(isEnabled) {
+            gpxFile.load(filePath: pathLabel.stringValue, gpsLocation: &gpsLocation)
+            showCoordinates()
+        }
+        
+        citySelector.isEnabled = isEnabled
+        latitudeText.isEnabled = isEnabled
+        longitudeText.isEnabled = isEnabled
+        applyButton.isEnabled = isEnabled
+        saveButton.isEnabled = isEnabled
     }
     
     // MARK: - Coordinates actions
@@ -47,7 +75,7 @@ class ViewController: NSViewController {
     
     // MARK: - Buttons actions
     
-    @IBAction func ApplyTouched(_ sender: Any) {
+    @IBAction func applyTouched(_ sender: Any) {
         let key = citySelector.titleOfSelectedItem
         let coordinates = cities[key!]
         gpsLocation.setCoordinates(lat: coordinates![0], lon: coordinates![1])
@@ -56,9 +84,34 @@ class ViewController: NSViewController {
         showCoordinates()
     }
     
-    
-    @IBAction func SaveTouched(_ sender: Any) {
+    @IBAction func saveTouched(_ sender: Any) {
         saveCoordinates()
+    }
+    
+    @IBAction func findGPXFileTouched(_ sender: Any) {
+        let dialog = NSOpenPanel();
+        dialog.title                   = "Choose a .gpx file";
+        dialog.showsResizeIndicator    = true;
+        dialog.showsHiddenFiles        = false;
+        dialog.canChooseDirectories    = false;
+        dialog.canCreateDirectories    = false;
+        dialog.allowsMultipleSelection = false;
+        dialog.allowedFileTypes        = ["gpx"];
+        
+        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+            let result = dialog.url
+            
+            if (result != nil) {
+                let path = result!.path
+                pathLabel.stringValue = path
+                
+                UserDefaults.standard.set(path, forKey: "gpxPathKey")
+                
+                setElements(isEnabled: true)
+            }
+        } else {
+            return
+        }
     }
 }
 

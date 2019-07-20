@@ -710,7 +710,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box title="GPS Spoofer" translatesAutoresizingMaskIntoConstraints="NO" id="tLu-7c-acP">
-                                <rect key="frame" x="17" y="154" width="446" height="182"/>
+                                <rect key="frame" x="17" y="116" width="446" height="182"/>
                                 <view key="contentView" id="rHC-ba-Qze">
                                     <rect key="frame" x="3" y="3" width="440" height="164"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -720,10 +720,10 @@
                                             <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b9J-ul-0qt">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="applyTouched:" target="XfG-lQ-9wD" id="xJ0-Ab-gk8"/>
+                                                </connections>
                                             </buttonCell>
-                                            <connections>
-                                                <action selector="ApplyTouched:" target="XfG-lQ-9wD" id="edL-gD-3T6"/>
-                                            </connections>
                                         </button>
                                         <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="noo-We-qJh">
                                             <rect key="frame" x="18" y="120" width="322" height="25"/>
@@ -778,10 +778,10 @@
                                             <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TDe-wd-YOT">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="saveTouched:" target="XfG-lQ-9wD" id="WrM-MT-c1U"/>
+                                                </connections>
                                             </buttonCell>
-                                            <connections>
-                                                <action selector="SaveTouched:" target="XfG-lQ-9wD" id="52a-Ja-8fR"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -809,17 +809,17 @@
                                 </view>
                             </box>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWt-Pm-kMP">
-                                <rect key="frame" x="20" y="20" width="440" height="130"/>
+                                <rect key="frame" x="20" y="20" width="440" height="92"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="6g9-9W-5HK">
-                                    <rect key="frame" x="0.0" y="0.0" width="440" height="130"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="440" height="92"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="kbv-kO-CoI">
-                                            <rect key="frame" x="0.0" y="0.0" width="440" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="440" height="92"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="440" height="130"/>
+                                            <size key="minSize" width="440" height="92"/>
                                             <size key="maxSize" width="440" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -830,26 +830,55 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="eCj-kj-ZO3">
-                                    <rect key="frame" x="424" y="0.0" width="16" height="130"/>
+                                    <rect key="frame" x="424" y="0.0" width="16" height="92"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wAx-6a-B44">
+                                <rect key="frame" x="135" y="319" width="327" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" placeholderString="Path" id="2FM-6e-M3r">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rnY-3Q-xkg">
+                                <rect key="frame" x="14" y="308" width="121" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="109" id="OBI-W6-1CW"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Find GPX File" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZKC-Nw-ITf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="findGPXFileTouched:" target="XfG-lQ-9wD" id="Sxv-8M-9xd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="lWt-Pm-kMP" firstAttribute="top" secondItem="tLu-7c-acP" secondAttribute="bottom" constant="8" id="GZI-gH-rId"/>
+                            <constraint firstItem="tLu-7c-acP" firstAttribute="top" secondItem="rnY-3Q-xkg" secondAttribute="bottom" constant="17" id="0HU-WH-gKF"/>
+                            <constraint firstItem="rnY-3Q-xkg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="5VE-E0-k32"/>
                             <constraint firstItem="tLu-7c-acP" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="1/2" id="M9m-J0-Fpe"/>
-                            <constraint firstItem="tLu-7c-acP" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="QWB-Qb-xxG"/>
+                            <constraint firstAttribute="trailing" secondItem="wAx-6a-B44" secondAttribute="trailing" constant="20" id="RRv-n5-gJd"/>
                             <constraint firstItem="lWt-Pm-kMP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Rht-4e-JY5"/>
                             <constraint firstAttribute="trailing" secondItem="tLu-7c-acP" secondAttribute="trailing" constant="20" id="VEP-VQ-nCV"/>
                             <constraint firstItem="tLu-7c-acP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Wg8-xf-qQy"/>
+                            <constraint firstItem="rnY-3Q-xkg" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="Wsn-4S-Ol4"/>
                             <constraint firstAttribute="bottom" secondItem="lWt-Pm-kMP" secondAttribute="bottom" constant="20" id="kBI-OI-Vq2"/>
+                            <constraint firstItem="wAx-6a-B44" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="n73-uG-bcI"/>
                             <constraint firstAttribute="trailing" secondItem="lWt-Pm-kMP" secondAttribute="trailing" constant="20" id="sqC-i0-Syb"/>
+                            <constraint firstItem="wAx-6a-B44" firstAttribute="leading" secondItem="rnY-3Q-xkg" secondAttribute="trailing" constant="8" id="yyh-Ul-MmP"/>
+                            <constraint firstItem="lWt-Pm-kMP" firstAttribute="top" secondItem="tLu-7c-acP" secondAttribute="bottom" constant="8" id="zzQ-YX-AhL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="applyButton" destination="gnx-it-VxT" id="tCO-on-mHe"/>
                         <outlet property="citySelector" destination="noo-We-qJh" id="EOu-Xw-rbu"/>
                         <outlet property="latitudeText" destination="neD-Sw-rsF" id="zNA-mI-gUD"/>
                         <outlet property="longitudeText" destination="wz6-nY-ysD" id="pbr-lA-Axa"/>
+                        <outlet property="pathLabel" destination="wAx-6a-B44" id="yAk-MG-wUP"/>
+                        <outlet property="saveButton" destination="1KF-XW-CPa" id="u5a-Qe-9Ff"/>
                         <outlet property="terminal" destination="lWt-Pm-kMP" id="dTG-2z-kIa"/>
                     </connections>
                 </viewController>
