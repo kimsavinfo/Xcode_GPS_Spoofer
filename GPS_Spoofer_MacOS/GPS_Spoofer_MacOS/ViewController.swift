@@ -8,12 +8,9 @@
 
 import Cocoa
 
-struct Location {
-    var latitude: Float
-    var longitude: Float
-}
 
 class ViewController: NSViewController, XMLParserDelegate {
+    var gpsLocation:GPSLocation = GPSLocation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +18,8 @@ class ViewController: NSViewController, XMLParserDelegate {
         loadGPSLocation()
     }
 
+    // MARK: - Load GPS Location from gpx file
+    
     func loadGPSLocation() {
         
         if let path = Bundle.main.url(forResource: "gps_location", withExtension: "gpx") {
@@ -36,9 +35,9 @@ class ViewController: NSViewController, XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         
         if elementName == "wpt" {
-            for att in attributeDict {
-                print(att)
-            }
+            let lat = Double(attributeDict["lat"]!)!
+            let lon = Double(attributeDict["lon"]!)!
+            gpsLocation.setCoordinates(lat: lat, lon: lon)
         }
     }
 }
