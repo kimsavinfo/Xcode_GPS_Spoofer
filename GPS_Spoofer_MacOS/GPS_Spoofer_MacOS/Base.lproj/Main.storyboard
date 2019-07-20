@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="GPS_Spoofer_MacOS" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -703,15 +704,91 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="GPS_Spoofer_MacOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="356"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box title="GPS Spoofer" translatesAutoresizingMaskIntoConstraints="NO" id="tLu-7c-acP">
+                                <rect key="frame" x="17" y="154" width="446" height="182"/>
+                                <view key="contentView" id="rHC-ba-Qze">
+                                    <rect key="frame" x="3" y="3" width="440" height="164"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gnx-it-VxT">
+                                            <rect key="frame" x="351" y="116" width="75" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b9J-ul-0qt">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                        <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="noo-We-qJh">
+                                            <rect key="frame" x="18" y="120" width="322" height="25"/>
+                                            <popUpButtonCell key="cell" type="push" title="City" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="PCO-2q-WqO" id="Xad-yl-Xph">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="GhO-ed-gVU">
+                                                    <items>
+                                                        <menuItem title="City" state="on" id="PCO-2q-WqO"/>
+                                                        <menuItem title="Item 2" id="uGO-Zg-jI0"/>
+                                                        <menuItem title="Item 3" id="AMh-ZI-cbz"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                        </popUpButton>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="noo-We-qJh" firstAttribute="leading" secondItem="rHC-ba-Qze" secondAttribute="leading" constant="20" id="3UM-PC-aFa"/>
+                                        <constraint firstItem="gnx-it-VxT" firstAttribute="top" secondItem="rHC-ba-Qze" secondAttribute="top" constant="20" id="CSu-cM-yvw"/>
+                                        <constraint firstItem="gnx-it-VxT" firstAttribute="leading" secondItem="noo-We-qJh" secondAttribute="trailing" constant="20" id="JbX-sn-ESa"/>
+                                        <constraint firstAttribute="trailing" secondItem="gnx-it-VxT" secondAttribute="trailing" constant="20" id="rrP-GH-1RI"/>
+                                        <constraint firstItem="gnx-it-VxT" firstAttribute="leading" secondItem="noo-We-qJh" secondAttribute="trailing" constant="20" id="yHD-dv-EhT"/>
+                                        <constraint firstItem="noo-We-qJh" firstAttribute="top" secondItem="rHC-ba-Qze" secondAttribute="top" constant="20" id="zE8-9s-kGd"/>
+                                    </constraints>
+                                </view>
+                            </box>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWt-Pm-kMP">
+                                <rect key="frame" x="20" y="20" width="440" height="130"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="6g9-9W-5HK">
+                                    <rect key="frame" x="0.0" y="0.0" width="440" height="130"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="kbv-kO-CoI">
+                                            <rect key="frame" x="0.0" y="0.0" width="440" height="130"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="440" height="130"/>
+                                            <size key="maxSize" width="440" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="64I-Oi-By4">
+                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="eCj-kj-ZO3">
+                                    <rect key="frame" x="424" y="0.0" width="16" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="lWt-Pm-kMP" firstAttribute="top" secondItem="tLu-7c-acP" secondAttribute="bottom" constant="8" id="GZI-gH-rId"/>
+                            <constraint firstItem="tLu-7c-acP" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="1/2" id="M9m-J0-Fpe"/>
+                            <constraint firstItem="tLu-7c-acP" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="QWB-Qb-xxG"/>
+                            <constraint firstItem="lWt-Pm-kMP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Rht-4e-JY5"/>
+                            <constraint firstAttribute="trailing" secondItem="tLu-7c-acP" secondAttribute="trailing" constant="20" id="VEP-VQ-nCV"/>
+                            <constraint firstItem="tLu-7c-acP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Wg8-xf-qQy"/>
+                            <constraint firstAttribute="bottom" secondItem="lWt-Pm-kMP" secondAttribute="bottom" constant="20" id="kBI-OI-Vq2"/>
+                            <constraint firstAttribute="trailing" secondItem="lWt-Pm-kMP" secondAttribute="trailing" constant="20" id="sqC-i0-Syb"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="698"/>
         </scene>
     </scenes>
 </document>

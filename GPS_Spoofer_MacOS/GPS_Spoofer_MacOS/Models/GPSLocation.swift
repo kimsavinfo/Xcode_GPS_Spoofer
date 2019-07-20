@@ -25,4 +25,9 @@ class GPSLocation {
         latitude = lat
         longitude = lon
     }
+    
+    func setCoordinates(location: GPSLocation) {
+        latitude = location.latitude
+        longitude = location.longitude
+    }
 }

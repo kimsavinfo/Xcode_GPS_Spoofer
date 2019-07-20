@@ -8,37 +8,17 @@
 
 import Cocoa
 
-
-class ViewController: NSViewController, XMLParserDelegate {
-    var gpsLocation:GPSLocation = GPSLocation()
+class ViewController: NSViewController {
+    var gpxFile = GPXFile(name: "gps_location", ext: "gpx")
+    var gpsLocation = GPSLocation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadGPSLocation()
-    }
-
-    // MARK: - Load GPS Location from gpx file
-    
-    func loadGPSLocation() {
+        gpxFile.load(gpsLocation: &gpsLocation)
         
-        if let path = Bundle.main.url(forResource: "gps_location", withExtension: "gpx") {
-            if let parser = XMLParser(contentsOf: path) {
-                parser.delegate = self
-                parser.parse()
-            }
-        } else {
-            print("ERROR - gps_location.gpx path not found")
-        }
+        print(gpsLocation.latitude , " " , gpsLocation.longitude)
     }
     
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        
-        if elementName == "wpt" {
-            let lat = Double(attributeDict["lat"]!)!
-            let lon = Double(attributeDict["lon"]!)!
-            gpsLocation.setCoordinates(lat: lat, lon: lon)
-        }
-    }
 }
 

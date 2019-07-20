@@ -13,6 +13,7 @@
 		C0F63CA322E2DE93008D8D2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F63CA122E2DE93008D8D2D /* Main.storyboard */; };
 		C0F63CAC22E2DF3B008D8D2D /* gps_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C0F63CAB22E2DF3B008D8D2D /* gps_location.gpx */; };
 		C0F63CB122E2E4CD008D8D2D /* GPSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F63CB022E2E4CD008D8D2D /* GPSLocation.swift */; };
+		C0F63CB322E2E89D008D8D2D /* GPXFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F63CB222E2E89D008D8D2D /* GPXFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		C0F63CA522E2DE93008D8D2D /* GPS_Spoofer_MacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GPS_Spoofer_MacOS.entitlements; sourceTree = "<group>"; };
 		C0F63CAB22E2DF3B008D8D2D /* gps_location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = gps_location.gpx; path = ../GPS_Spoofer_iOS/GPS_Spoofer_iOS/gps_location.gpx; sourceTree = "<group>"; };
 		C0F63CB022E2E4CD008D8D2D /* GPSLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocation.swift; sourceTree = "<group>"; };
+		C0F63CB222E2E89D008D8D2D /* GPXFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				C0F63CB022E2E4CD008D8D2D /* GPSLocation.swift */,
+				C0F63CB222E2E89D008D8D2D /* GPXFile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				C0F63CB122E2E4CD008D8D2D /* GPSLocation.swift in Sources */,
 				C0F63C9E22E2DE92008D8D2D /* ViewController.swift in Sources */,
 				C0F63C9C22E2DE92008D8D2D /* AppDelegate.swift in Sources */,
+				C0F63CB322E2E89D008D8D2D /* GPXFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
