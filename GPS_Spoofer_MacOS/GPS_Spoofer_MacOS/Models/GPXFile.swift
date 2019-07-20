@@ -9,12 +9,12 @@
 import Foundation
 
 class GPXFile: NSObject, XMLParserDelegate {
-    let coordinatesKey = "wpt"
-    let latitudeKey = "lat"
-    let longitudeKey = "lon"
-    var fileName = ""
-    var fileExtension = ""
-    var loadedLocation = GPSLocation()
+    private let coordinatesKey = "wpt"
+    private let latitudeKey = "lat"
+    private let longitudeKey = "lon"
+    private var fileName = ""
+    private var fileExtension = ""
+    private var loadedLocation = GPSLocation()
     
     init(name: String, ext: String) {
         fileName = name

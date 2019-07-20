@@ -9,8 +9,8 @@
 import Foundation
 
 class GPSLocation {
-    var latitude: Double
-    var longitude: Double
+    private var latitude: Double
+    private var longitude: Double
     
     init() {
         latitude = 0
@@ -29,5 +29,13 @@ class GPSLocation {
     func setCoordinates(location: GPSLocation) {
         latitude = location.latitude
         longitude = location.longitude
+    }
+    
+    func getLatitude() -> Double {
+        return latitude
+    }
+    
+    func getLongitude() -> Double {
+        return longitude
     }
 }
