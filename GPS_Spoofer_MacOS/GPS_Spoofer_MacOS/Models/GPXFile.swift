@@ -55,7 +55,6 @@ class GPXFile: NSObject, XMLParserDelegate {
         
         do {
             try xmlString.write(to: URL(fileURLWithPath: gpxfilePath) , atomically: false, encoding: .utf8)
-            print("Coordinates saved in ", gpxfilePath)
         }
         catch {
             print("ERROR - could not save coordinates in ", gpxfilePath, ": ", error)

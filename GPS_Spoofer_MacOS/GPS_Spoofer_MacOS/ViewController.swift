@@ -129,7 +129,7 @@ class ViewController: NSViewController {
     
     
     override func keyDown(with event: NSEvent) {
-        let speed:Double = Double(movingSpeed.selectedSegment + 1)
+        let speed:Double = Double( speedMode[movingSpeed.selectedSegment])
         
         if (event.keyCode == 123){
             terminal.documentView!.insertText("Going west\n")
