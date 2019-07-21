@@ -34,6 +34,8 @@ class ViewController: NSViewController {
         var enable = false
         loadUserSettings(enableElements: &enable)
         setElements(isEnabled: enable)
+        
+        terminal.becomeFirstResponder()
     }
 
     func loadCities() {
@@ -46,8 +48,11 @@ class ViewController: NSViewController {
     
     func loadUserSettings(enableElements: inout Bool) {
         if let gpxPath = UserDefaults.standard.object(forKey: "gpxPathKey") {
-            let url = URL(fileURLWithPath: gpxPath as! String)
-            if( url.pathExtension == "gpx" ) {
+            let path = gpxPath as! String
+            let url = URL(fileURLWithPath: path)
+            
+            let fileManager = FileManager.default
+            if url.pathExtension == "gpx" && fileManager.fileExists(atPath: path) {
                 enableElements = true
                 pathLabel.stringValue = gpxPath as! String
             }
@@ -72,6 +77,7 @@ class ViewController: NSViewController {
     
     func saveCoordinates() {
         gpxFile.saveCoordinates(coordinates: gpsLocation)
+        showCoordinates()
     }
     
     func showCoordinates() {
@@ -87,7 +93,6 @@ class ViewController: NSViewController {
         gpsLocation.setCoordinates(lat: coordinates![0], lon: coordinates![1])
         
         saveCoordinates()
-        showCoordinates()
     }
     
     @IBAction func saveTouched(_ sender: Any) {
@@ -124,29 +129,32 @@ class ViewController: NSViewController {
     
     
     override func keyDown(with event: NSEvent) {
-        //let speed = movingSpeed.selectedSegment
-        let speed = 9 / 3600 // 0.0025 ~= 2,5m/s ~= 9 km/h
-        
+        let speed:Double = Double(movingSpeed.selectedSegment + 1)
         
         if (event.keyCode == 123){
             terminal.documentView!.insertText("Going west\n")
-            gpsLocation.moveLongitude(left: false);
+            gpsLocation.moveLongitude(left: false, speed: speed);
+            
+            saveCoordinates()
         }
         if (event.keyCode == 124){
             terminal.documentView!.insertText("Going east\n")
-            gpsLocation.moveLongitude(left: true);
+            gpsLocation.moveLongitude(left: true, speed: speed);
+            
+            saveCoordinates()
         }
         if (event.keyCode == 126){
             terminal.documentView!.insertText("Going north\n")
-            gpsLocation.moveLatitude(up: true)
+            gpsLocation.moveLatitude(up: true, speed: speed)
+            
+            saveCoordinates()
         }
         if (event.keyCode == 125){
             terminal.documentView!.insertText("Going south\n")
-            gpsLocation.moveLatitude(up: false)
+            gpsLocation.moveLatitude(up: false, speed: speed)
+            
+            saveCoordinates()
         }
-        
-        saveCoordinates()
-        showCoordinates()
     }
 }
 

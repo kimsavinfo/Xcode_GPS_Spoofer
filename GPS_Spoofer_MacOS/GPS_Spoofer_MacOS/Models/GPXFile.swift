@@ -32,17 +32,6 @@ class GPXFile: NSObject, XMLParserDelegate {
             print("ERROR - could not load ", filePath)
         }
         
-        /*
-        if let path = Bundle.main.url(forResource: fileName, withExtension: fileExtension) {
-            if let parser = XMLParser(contentsOf: path) {
-                parser.delegate = self
-                parser.parse()
-            }
-            gpsLocation.setCoordinates(location: loadedLocation)
-        } else {
-            print("ERROR - could not load ", filePath)
-        }
- */
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
@@ -59,7 +48,7 @@ class GPXFile: NSObject, XMLParserDelegate {
         xmlString.append(contentsOf: "<?xml version=\"1.0\"?>\n")
         xmlString.append(contentsOf: "<gpx version=\"1.1\" creator=\"Xcode\">\n" )
         xmlString.append(contentsOf: "\t<wpt lat=\"\(String(coordinates.getLatitude()))\" lon=\"\(String(coordinates.getLongitude()))\">\n" )
-        xmlString.append(contentsOf: "\t\t<name>Cupertino</name>\n" )
+        xmlString.append(contentsOf: "\t\t<name>ALocation</name>\n" )
         xmlString.append(contentsOf: "\t\t<time>2014-09-24T14:55:37Z</time>\n" )
         xmlString.append(contentsOf: "\t</wpt>\n" )
         xmlString.append(contentsOf: "</gpx>\n" )

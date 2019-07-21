@@ -12,7 +12,6 @@
 		C0A480E422E0F927008A479B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A480E222E0F927008A479B /* Main.storyboard */; };
 		C0A480E622E0F928008A479B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0A480E522E0F928008A479B /* Assets.xcassets */; };
 		C0A480E922E0F928008A479B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A480E722E0F928008A479B /* LaunchScreen.storyboard */; };
-		C0A480F122E0FC4B008A479B /* gps_location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C0A480F022E0FC4B008A479B /* gps_location.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,7 @@
 		C0A480E522E0F928008A479B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0A480E822E0F928008A479B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0A480EA22E0F928008A479B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C0A480F022E0FC4B008A479B /* gps_location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = gps_location.gpx; path = GPS_Spoofer_iOS/gps_location.gpx; sourceTree = "<group>"; };
+		C0F63CB622E455EF008D8D2D /* gps_location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = gps_location.gpx; path = ../gps_location.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +39,7 @@
 		C0A480D222E0F927008A479B = {
 			isa = PBXGroup;
 			children = (
-				C0A480F022E0FC4B008A479B /* gps_location.gpx */,
+				C0F63CB622E455EF008D8D2D /* gps_location.gpx */,
 				C0A480DD22E0F927008A479B /* GPS_Spoofer_iOS */,
 				C0A480DC22E0F927008A479B /* Products */,
 			);
@@ -128,7 +127,6 @@
 				C0A480E922E0F928008A479B /* LaunchScreen.storyboard in Resources */,
 				C0A480E622E0F928008A479B /* Assets.xcassets in Resources */,
 				C0A480E422E0F927008A479B /* Main.storyboard in Resources */,
-				C0A480F122E0FC4B008A479B /* gps_location.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

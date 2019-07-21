@@ -40,7 +40,7 @@ class GPSLocation {
         return longitude
     }
     
-    func moveLatitude(up: Bool) {
+    func moveLatitude(up: Bool, speed: Double) {
         if(up) {
             latitude += distanceFactor
         } else {
@@ -48,7 +48,7 @@ class GPSLocation {
         }
     }
     
-    func moveLongitude(left: Bool) {
+    func moveLongitude(left: Bool, speed: Double) {
         if(left) {
             longitude += distanceFactor
         } else {
